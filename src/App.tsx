@@ -1,11 +1,14 @@
-import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <Flex alignItems={"center"} justifyContent={"center"} h={"100vh"}>
-      <Text>hello world</Text>
-    </Flex>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/profile/:username" element={<Profile />} />
+    </Routes>
   );
 }
 
