@@ -1,10 +1,11 @@
+import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
 function App() {
   return (
-    <div>
-      <h1>hello world</h1>
-    </div>
+    <Flex alignItems={"center"} justifyContent={"center"} h={"100vh"}>
+      <Text>hello world</Text>
+    </Flex>
   );
 }
 
