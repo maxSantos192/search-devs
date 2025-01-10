@@ -1,10 +1,10 @@
 import React from "react";
 import { Flex, HStack, Stack, Text, Link } from "@chakra-ui/react";
 import { FaRegStar } from "react-icons/fa";
-import { RepositoryProps } from "../types/repository";
+import { Repository } from "../utils/models";
 
 interface CardRepositoryProps {
-  repo: RepositoryProps;
+  repo: Repository;
 }
 
 function CardRepository({ repo }: CardRepositoryProps) {

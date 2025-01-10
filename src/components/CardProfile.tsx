@@ -15,10 +15,10 @@ import { GrLocation } from "react-icons/gr";
 import { FaRegBuilding, FaLink, FaRegHeart } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
 import { LuTwitter } from "react-icons/lu";
-import { UserProps } from "../types/user";
+import { User } from "../utils/models";
 
 interface CardProfileProps {
-  user: UserProps;
+  user: User;
 }
 
 function CardProfile({ user }: CardProfileProps) {

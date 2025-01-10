@@ -12,13 +12,12 @@ import Header from "../components/Header";
 import CardProfile from "../components/CardProfile";
 import CardRepository from "../components/CardRepository";
 import NotFound from "../components/NotFound";
-import { UserProps } from "../types/user";
-import { RepositoryProps } from "../types/repository";
+import { User, Repository } from "../utils/models";
 
 function Profile() {
   const { username } = useParams();
-  const [user, setUser] = useState<UserProps | null>(null);
-  const [repos, setRepos] = useState<RepositoryProps[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [repos, setRepos] = useState<Repository[]>([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
