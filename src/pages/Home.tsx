@@ -12,7 +12,7 @@ import { CiSearch } from "react-icons/ci";
 
 function Home() {
   return (
-    <Flex justifyContent="center" alignItems="center" h="100vh">
+    <Flex justifyContent="center" alignItems="center" h="100vh" bg={"layout"}>
       <Flex direction="column" w="100%" maxW="800px" p={4} gap={12}>
         <Flex justifyContent="center" alignItems="center" gap={6}>
           <Text fontSize={{ base: 50, md: 80 }} textAlign={"center"}>
