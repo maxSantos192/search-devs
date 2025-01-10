@@ -1,13 +1,26 @@
-import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import { Button, Text, useMediaQuery, VStack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function NotFound() {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate("/");
+  }
+
   return (
-    <Flex justifyContent="center" alignItems="center" h="100%">
+    <VStack justifyContent="center" alignItems="center" h="100%" px={5}>
       <Text fontSize={"4xl"} textAlign={"center"}>
-        Ops! não encontramos o usuario que você está buscando.
+        Ops! não encontramos o usuário que você está buscando.
       </Text>
-    </Flex>
+      {isMobile && (
+        <Button colorScheme="purple" w={"full"} onClick={handleNavigate}>
+          Voltar
+        </Button>
+      )}
+    </VStack>
   );
 }
 
