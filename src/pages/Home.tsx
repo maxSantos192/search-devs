@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Box,
@@ -9,8 +9,30 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  async function handleSearch() {
+    if (!username.trim()) {
+      alert("Please enter a username to search for.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      if (!response.ok) {
+        alert("User not found.");
+        return;
+      }
+      navigate(`/profile/${username}`);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <Flex justifyContent="center" alignItems="center" h="100vh" bg={"layout"}>
       <Flex direction="column" w="100%" maxW="800px" p={4} gap={12}>
@@ -30,9 +52,13 @@ function Home() {
             <InputLeftElement pointerEvents="none">
               <CiSearch size={20} color="slate" />
             </InputLeftElement>
-            <Input placeholder="Search" />
+            <Input
+              placeholder="Search"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </InputGroup>
-          <Button colorScheme="purple" w={48}>
+          <Button colorScheme="purple" w={48} onClick={handleSearch}>
             Search
           </Button>
         </Flex>
