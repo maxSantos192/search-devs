@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, HStack, Stack, Text, Link } from "@chakra-ui/react";
 import { FaRegStar } from "react-icons/fa";
+import { BsDot } from "react-icons/bs";
 import { Repository } from "../utils/models";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -24,6 +25,7 @@ function CardRepository({ repo }: CardRepositoryProps) {
       <HStack>
         <FaRegStar size={24} color={"slate"} />
         <Text fontSize={"sm"}>{repo.stargazers_count}</Text>
+        <BsDot size={24} />
         <Text fontSize={"sm"}>
           {`Atualizado há ${formatDistanceToNow(new Date(repo.updated_at), {
             locale: ptBR,
