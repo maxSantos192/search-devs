@@ -15,12 +15,12 @@ function Home() {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  async function handleSearch() {
+  async function handleSearch(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     if (!username.trim()) {
       alert("Please enter a username to search for.");
       return;
     }
-
     try {
       const response = await fetch(`https://api.github.com/users/${username}`);
       if (!response.ok) {
@@ -29,7 +29,7 @@ function Home() {
       }
       navigate(`/profile/${username}`);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 
@@ -47,21 +47,23 @@ function Home() {
           </Text>
         </Flex>
 
-        <Flex gap={6}>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <CiSearch size={20} color="slate" />
-            </InputLeftElement>
-            <Input
-              placeholder="Search"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </InputGroup>
-          <Button colorScheme="purple" w={48} onClick={handleSearch}>
-            Search
-          </Button>
-        </Flex>
+        <form onSubmit={handleSearch}>
+          <Flex gap={6}>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <CiSearch size={20} color="slate" />
+              </InputLeftElement>
+              <Input
+                placeholder="Search"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </InputGroup>
+            <Button colorScheme="purple" w={48} type="submit">
+              Search
+            </Button>
+          </Flex>
+        </form>
       </Flex>
     </Flex>
   );
