@@ -11,8 +11,8 @@ import { CiSearch } from "react-icons/ci";
 
 function Header() {
   return (
-    <HStack w={"full"} h={"88px"}>
-      <HStack w={"full"} maxW={"1200px"} px={4} align={"center"}>
+    <HStack w={"full"} h={"88px"} bg={"white"} justify={"center"}>
+      <HStack w={"1920px"} px={5}>
         <Image src={logo} alt="Search devs" px={12} />
 
         <InputGroup w={"590px"}>
