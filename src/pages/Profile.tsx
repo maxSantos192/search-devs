@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
+  Button,
   Card,
   CardBody,
   Flex,
@@ -60,7 +61,16 @@ function Profile() {
           maxW={"1920px"}
           alignItems="flex-start"
         >
-          <CardProfile user={user} isMobile={isMobile} />
+          <VStack spacing={10}>
+            <CardProfile user={user} isMobile={isMobile} />
+            <Button
+              w={"full"}
+              colorScheme="purple"
+              display={isMobile ? "none" : "inline-block"}
+            >
+              Contato
+            </Button>
+          </VStack>
           <Card alignSelf={"start"} w={"full"}>
             <CardBody>
               <Stack divider={<StackDivider />} spacing={4}>
