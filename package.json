@@ -11,6 +11,7 @@
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",
     "cra-template-typescript": "1.2.0",
+    "date-fns": "^4.1.0",
     "framer-motion": "^11.16.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

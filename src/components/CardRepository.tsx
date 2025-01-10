@@ -2,6 +2,8 @@ import React from "react";
 import { Flex, HStack, Stack, Text, Link } from "@chakra-ui/react";
 import { FaRegStar } from "react-icons/fa";
 import { Repository } from "../utils/models";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 interface CardRepositoryProps {
   repo: Repository;
@@ -23,7 +25,10 @@ function CardRepository({ repo }: CardRepositoryProps) {
         <FaRegStar size={24} color={"slate"} />
         <Text fontSize={"sm"}>{repo.stargazers_count}</Text>
         <Text fontSize={"sm"}>
-          {new Date(repo.updated_at).toLocaleDateString()}
+          {`Atualizado há ${formatDistanceToNow(new Date(repo.updated_at), {
+            locale: ptBR,
+            addSuffix: false,
+          })}`}
         </Text>
       </HStack>
     </Stack>
