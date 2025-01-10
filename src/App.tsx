@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 
@@ -8,6 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/profile/:username" element={<Profile />} />
+      <Route path="/profile" element={<Navigate to="/" />} />
     </Routes>
   );
 }
