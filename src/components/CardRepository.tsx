@@ -1,43 +1,32 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  Flex,
-  HStack,
-  Stack,
-  StackDivider,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text, Link } from "@chakra-ui/react";
 import { FaRegStar } from "react-icons/fa";
+import { RepositoryProps } from "../types/repository";
 
-function CardRepository() {
+interface CardRepositoryProps {
+  repo: RepositoryProps;
+}
+
+function CardRepository({ repo }: CardRepositoryProps) {
   return (
-    <Card alignSelf={"start"}>
-      <CardBody>
-        <Stack divider={<StackDivider />}>
-          <Stack spacing={4}>
-            <Text as={"b"} color={"black"} fontSize={"xl"}>
-              Repositório nome
-            </Text>
-            <Flex>
-              <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus.
-              </Text>
-            </Flex>
+    <Stack spacing={4}>
+      <Link href={repo.html_url}>
+        <Text as={"b"} color={"black"} fontSize={"xl"}>
+          {repo.name}
+        </Text>
+      </Link>
+      <Flex>
+        <Text>{repo.description || "Sem descrição"}</Text>
+      </Flex>
 
-            <HStack>
-              <FaRegStar size={24} color={"slate"} />
-              <Text fontSize={"sm"}>100</Text>
-              <Text fontSize={"sm"}>Atualizado há 2 dias</Text>
-            </HStack>
-          </Stack>
-        </Stack>
-      </CardBody>
-    </Card>
+      <HStack>
+        <FaRegStar size={24} color={"slate"} />
+        <Text fontSize={"sm"}>{repo.stargazers_count}</Text>
+        <Text fontSize={"sm"}>
+          {new Date(repo.updated_at).toLocaleDateString()}
+        </Text>
+      </HStack>
+    </Stack>
   );
 }
 
