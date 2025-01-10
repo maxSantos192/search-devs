@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-  Flex,
   HStack,
   Image,
   Input,
   InputGroup,
   InputLeftElement,
+  Link,
 } from "@chakra-ui/react";
 import logo from "../assets/logo.svg";
 import { CiSearch } from "react-icons/ci";
@@ -39,7 +39,9 @@ function Header({ name, isMobile }: HeaderProps) {
       display={isMobile ? "none" : "flex"}
     >
       <HStack px={5}>
-        <Image src={logo} alt="Search devs" px={12} />
+        <Link href="/">
+          <Image src={logo} alt="Search devs" px={12} />
+        </Link>
 
         <form onSubmit={handleSearch}>
           <InputGroup>
