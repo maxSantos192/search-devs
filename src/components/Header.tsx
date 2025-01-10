@@ -13,9 +13,10 @@ import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   name?: string;
+  isMobile: boolean;
 }
 
-function Header({ name }: HeaderProps) {
+function Header({ name, isMobile }: HeaderProps) {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
@@ -29,7 +30,14 @@ function Header({ name }: HeaderProps) {
   }
 
   return (
-    <HStack w={"full"} bg={"white"} h={"88px"} justify={"center"} py={5}>
+    <HStack
+      w={"full"}
+      bg={"white"}
+      h={"88px"}
+      justify={"center"}
+      py={5}
+      display={isMobile ? "none" : "flex"}
+    >
       <HStack px={5}>
         <Image src={logo} alt="Search devs" px={12} />
 

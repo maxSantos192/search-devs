@@ -19,11 +19,12 @@ import { User } from "../utils/models";
 
 interface CardProfileProps {
   user: User;
+  isMobile: boolean;
 }
 
-function CardProfile({ user }: CardProfileProps) {
+function CardProfile({ user, isMobile }: CardProfileProps) {
   return (
-    <Card minW={"280px"}>
+    <Card minW={"280px"} bg={isMobile ? "purple.400" : "white"}>
       <CardBody>
         <Stack spacing={8}>
           <Flex>

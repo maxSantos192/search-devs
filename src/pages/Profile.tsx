@@ -6,6 +6,7 @@ import {
   Flex,
   Stack,
   StackDivider,
+  useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import Header from "../components/Header";
@@ -18,6 +19,7 @@ function Profile() {
   const { username } = useParams();
   const [user, setUser] = useState<User | null>(null);
   const [repos, setRepos] = useState<Repository[]>([]);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -47,17 +49,18 @@ function Profile() {
 
   return (
     <VStack h={"100vh"} bg={"layout"}>
-      <Header name={user?.name} />
+      <Header name={user?.name} isMobile={isMobile} />
       {user ? (
         <Flex
-          gap={10}
-          mt={10}
-          px={5}
+          gap={isMobile ? 0 : 10}
+          mt={isMobile ? 0 : 10}
+          px={isMobile ? 0 : 5}
+          direction={isMobile ? "column" : "row"}
           w={"full"}
           maxW={"1920px"}
           alignItems="flex-start"
         >
-          <CardProfile user={user} />
+          <CardProfile user={user} isMobile={isMobile} />
           <Card alignSelf={"start"} w={"full"}>
             <CardBody>
               <Stack divider={<StackDivider />} spacing={4}>
